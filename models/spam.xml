@@ -1,0 +1,451 @@
+<?xml version='1.0' encoding='ASCII'?>
+<PMML version="4.2" xmlns="http://www.dmg.org/PMML-4_2">
+  <Header/>
+  <DataDictionary>
+    <DataField name="AgeInMonths" dataType="double" optype="continuous"/>
+    <DataField name="DaysSinceDisbursement" dataType="double" optype="continuous"/>
+    <DataField name="PERFORM_CNS_SCORE" dataType="double" optype="continuous"/>
+    <DataField name="PRIMARY_INSTAL_AMT" dataType="double" optype="continuous"/>
+    <DataField name="PRI_SANCTIONED_AMOUNT" dataType="double" optype="continuous"/>
+    <DataField name="State_ID" dataType="string" optype="categorical"/>
+    <DataField name="VoterID_flag" dataType="string" optype="categorical"/>
+    <DataField name="disbursed_amount" dataType="double" optype="continuous"/>
+    <DataField name="ltv" dataType="double" optype="continuous"/>
+    <DataField name="manufacturer_id" dataType="string" optype="categorical"/>
+  </DataDictionary>
+  <Scorecard modelName="spam" functionName="regression" useReasonCodes="true" reasonCodeAlgorithm="pointsAbove" initialScore="112" baselineScore="1" baselineMethod="min">
+    <MiningSchema>
+      <MiningField name="AgeInMonths"/>
+      <MiningField name="DaysSinceDisbursement"/>
+      <MiningField name="PERFORM_CNS_SCORE"/>
+      <MiningField name="PRIMARY_INSTAL_AMT"/>
+      <MiningField name="PRI_SANCTIONED_AMOUNT"/>
+      <MiningField name="State_ID"/>
+      <MiningField name="VoterID_flag"/>
+      <MiningField name="disbursed_amount"/>
+      <MiningField name="ltv"/>
+      <MiningField name="manufacturer_id"/>
+    </MiningSchema>
+    <Output>
+      <OutputField name="RiskScore" feature="predictedValue" dataType="double" optype="continuous"/>
+      <OutputField name="ReasonCode1" rank="1" feature="reasonCode" dataType="string" optype="categorical"/>
+      <OutputField name="ReasonCode2" rank="2" feature="reasonCode" dataType="string" optype="categorical"/>
+      <OutputField name="ReasonCode3" rank="3" feature="reasonCode" dataType="string" optype="categorical"/>
+    </Output>
+    <Characteristics>
+      <Characteristic name="AgeInMonthsScore" reasonCode="AgeInMonthsRC">
+        <Attribute reasonCode="" partialScore="10">
+          <SimplePredicate field="AgeInMonths" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="218.0"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="288.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="6">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="288.5"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="347.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="19">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="347.5"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="357.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="8">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="357.5"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="411.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="14">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="411.5"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="516.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="20">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="516.5"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="562.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="15">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="562.5"/>
+            <SimplePredicate field="AgeInMonths" operator="lessThan" value="672.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="24">
+          <SimplePredicate field="AgeInMonths" operator="greaterOrEqual" value="672.5"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="DaysSinceDisbursementScore" reasonCode="DaysSinceDisbursementRC">
+        <Attribute reasonCode="" partialScore="30">
+          <SimplePredicate field="DaysSinceDisbursement" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="62.0"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="62.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="15">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="62.5"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="68.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="23">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="68.5"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="70.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="31">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="70.5"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="94.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="45">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="94.5"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="112.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="34">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="112.5"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="143.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="11">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="143.5"/>
+            <SimplePredicate field="DaysSinceDisbursement" operator="lessThan" value="146.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="26">
+          <SimplePredicate field="DaysSinceDisbursement" operator="greaterOrEqual" value="146.5"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="PERFORM_CNS_SCOREScore" reasonCode="PERFORM_CNS_SCORERC">
+        <Attribute reasonCode="" partialScore="34">
+          <SimplePredicate field="PERFORM_CNS_SCORE" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="300.0"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="396.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="14">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="396.5"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="615.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="42">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="615.5"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="681.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="64">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="681.5"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="737.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="36">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="737.5"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="738.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="79">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="738.5"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="774.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="98">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="774.5"/>
+            <SimplePredicate field="PERFORM_CNS_SCORE" operator="lessThan" value="824.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="53">
+          <SimplePredicate field="PERFORM_CNS_SCORE" operator="greaterOrEqual" value="824.5"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="PRIMARY_INSTAL_AMTScore" reasonCode="PRIMARY_INSTAL_AMTRC">
+        <Attribute reasonCode="" partialScore="9">
+          <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="17">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="0.0"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="5.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="10">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="5.5"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="1564.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="5">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="1564.5"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="1985.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="1985.5"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="2482.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="8">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="2482.5"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="3400.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="5">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="3400.5"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="4351.0"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="10">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="4351.0"/>
+            <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="lessThan" value="41554.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="23">
+          <SimplePredicate field="PRIMARY_INSTAL_AMT" operator="greaterOrEqual" value="41554.5"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="PRI_SANCTIONED_AMOUNTScore" reasonCode="PRI_SANCTIONED_AMOUNTRC">
+        <Attribute reasonCode="" partialScore="8">
+          <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="16">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="0.0"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="0.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="0.5"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="11599.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="15">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="11599.5"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="24999.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="1">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="24999.5"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="115757.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="11">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="115757.5"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="221800.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="22">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="221800.5"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="802737.0"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="35">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="802737.0"/>
+            <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="lessThan" value="1869522.0"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="46">
+          <SimplePredicate field="PRI_SANCTIONED_AMOUNT" operator="greaterOrEqual" value="1869522.0"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="State_IDScore" reasonCode="State_IDRC">
+        <Attribute reasonCode="" partialScore="28">
+          <SimplePredicate field="State_ID" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="32">
+          <SimplePredicate field="State_ID" operator="equal" value="4"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="40">
+          <SimplePredicate field="State_ID" operator="equal" value="3"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="32">
+          <SimplePredicate field="State_ID" operator="equal" value="6"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <SimplePredicate field="State_ID" operator="equal" value="13"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="24">
+          <SimplePredicate field="State_ID" operator="equal" value="8"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="9">
+          <SimplePredicate field="State_ID" operator="equal" value="14"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="45">
+          <SimplePredicate field="State_ID" operator="equal" value="1"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="28">
+          <True/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="VoterID_flagScore" reasonCode="VoterID_flagRC">
+        <Attribute reasonCode="" partialScore="7">
+          <SimplePredicate field="VoterID_flag" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="9">
+          <SimplePredicate field="VoterID_flag" operator="equal" value="0"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <SimplePredicate field="VoterID_flag" operator="equal" value="1"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="disbursed_amountScore" reasonCode="disbursed_amountRC">
+        <Attribute reasonCode="" partialScore="8">
+          <SimplePredicate field="disbursed_amount" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="22">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="13320.0"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="43616.0"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="16">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="43616.0"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="47391.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="12">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="47391.5"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="50303.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="8">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="50303.5"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="53316.0"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="5">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="53316.0"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="55399.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="2">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="55399.5"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="64253.5"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="64253.5"/>
+            <SimplePredicate field="disbursed_amount" operator="lessThan" value="83314.0"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="5">
+          <SimplePredicate field="disbursed_amount" operator="greaterOrEqual" value="83314.0"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="ltvScore" reasonCode="ltvRC">
+        <Attribute reasonCode="" partialScore="19">
+          <SimplePredicate field="ltv" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="56">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="10.03"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="60.045"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="44">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="60.045"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="66.705"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="30">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="66.705"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="72.545"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="19">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="72.545"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="74.735"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="2">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="74.735"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="75.005"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="28">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="75.005"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="78.655"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="9">
+          <CompoundPredicate booleanOperator="and">
+            <SimplePredicate field="ltv" operator="greaterOrEqual" value="78.655"/>
+            <SimplePredicate field="ltv" operator="lessThan" value="83.265"/>
+          </CompoundPredicate>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <SimplePredicate field="ltv" operator="greaterOrEqual" value="83.265"/>
+        </Attribute>
+      </Characteristic>
+      <Characteristic name="manufacturer_idScore" reasonCode="manufacturer_idRC">
+        <Attribute reasonCode="" partialScore="23">
+          <SimplePredicate field="manufacturer_id" operator="isMissing"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="29">
+          <SimplePredicate field="manufacturer_id" operator="equal" value="86"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="17">
+          <SimplePredicate field="manufacturer_id" operator="equal" value="45"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="0">
+          <SimplePredicate field="manufacturer_id" operator="equal" value="48"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="25">
+          <SimplePredicate field="manufacturer_id" operator="equal" value="49"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="20">
+          <SimplePredicate field="manufacturer_id" operator="equal" value="120"/>
+        </Attribute>
+        <Attribute reasonCode="" partialScore="26">
+          <True/>
+        </Attribute>
+      </Characteristic>
+    </Characteristics>
+  </Scorecard>
+</PMML>
