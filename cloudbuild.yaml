@@ -5,24 +5,25 @@ steps:
 # Deploy container image to Cloud Run
 - id: 'deploy image'
   name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'ai-serving', '--image', 'gcr.io/credit-risk-data-science/ai-serving:latest', '--region', 'us-central1','--cpu','1','--ingress','internal-and-cloud-load-balancing','--max-instances','2','--port','9090','--allow-unauthenticated']
+  args: ['run', 'deploy', 'ai-serving', '--image', 'gcr.io/credit-risk-data-science/ai-serving:latest', '--region', 'us-central1','--cpu','1','--ingress','all','--max-instances','2','--port','9090','--allow-unauthenticated']
 - id: 'get serving url'
-  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'services', 'describe', 'ai-serving2', '--region', 'us-central1', '--format', 'value(status.url)','>','/workspace/url.txt']
+  name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: /bin/bash
+  args: ['-c', 'gcloud run services describe ai-serving --region us-central1 --format "value(status.url)" >/workspace/url.txt']
 
 - id: 'deploy all models'
   name: 'gcr.io/cloud-builders/curl'
   entrypoint: 'bash'
   args: 
-    - '-c'
-    - |
+  - '-c'
+  - |
     url=$(cat /workspace/url.txt)
     echo "deploying to $url"
     [ -z "$url" ] && exit 2
     for i in /workspace/ai-serving-crds/models/*.xml; do
      modelname=$(basename ${i} .xml)
      echo "deploying $modelname"
-     curl -X PUT --data-binary @${i} -H "Content-Type: application/xml"  http://${url}/v1/models/${modelname}
+     curl -X PUT --data-binary @${i} -H "Content-Type: application/xml" "${url}/v1/models/${modelname}"
+     curl -X GET "${url}/v1/models/${modelname}"
     done
 
